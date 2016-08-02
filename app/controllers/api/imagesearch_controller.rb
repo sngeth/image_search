@@ -1,5 +1,9 @@
 class Api::ImagesearchController < ApplicationController
   def index
-    render nothing: true, status: :ok
+    search_term = params[:search]
+
+    HTTParty.get('https://api.imgur.com/3/gallery/search?q='+search_term)
+
+    render json: @results
   end
 end
