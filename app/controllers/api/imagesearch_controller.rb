@@ -1,8 +1,14 @@
 class Api::ImagesearchController < ApplicationController
   def index
-    search_term = params[:search]
+    query = {"q" => params[:search]}
 
-    HTTParty.get('https://api.imgur.com/3/gallery/search?q='+search_term)
+    imgur_client_id = Rails.application.secrets[:IMGUR_CLIENT_ID]
+    headers = {
+      "Authorization" => imgur_client_id
+    }
+
+    @results = HTTParty.get("https://api.imgur.com/3/gallery/search",
+                 :query => query, :headers => headers )
 
     render json: @results
   end

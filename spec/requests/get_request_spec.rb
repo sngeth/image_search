@@ -7,8 +7,8 @@ RSpec.describe "GET imagesearch index" do
 
     get '/api/imagesearch/lolcats%20funny?offset=10'
 
+
     expect(WebMock).to have_requested(:get, "https://api.imgur.com/3/gallery/search")
       .with(query: {"q" => "lolcats funny"})
-
   end
 end
