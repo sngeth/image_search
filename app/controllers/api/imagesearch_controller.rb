@@ -8,8 +8,8 @@ class Api::ImagesearchController < ApplicationController
     }
 
     @results = HTTParty.get("https://api.imgur.com/3/gallery/search",
-                 :query => query, :headers => headers )
+                 query: query, headers: headers )
 
-    render json: @results
+    render json: @results.as_json
   end
 end

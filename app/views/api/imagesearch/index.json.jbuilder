@@ -1,2 +1,0 @@
-json.results do
-end
