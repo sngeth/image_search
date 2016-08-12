@@ -11,6 +11,8 @@ class Api::ImagesearchController < ApplicationController
                  query: query, headers: headers )
 
     json = parse_imgur_response(@results)
+
+    Search.create(term: params[:search], when: DateTime.new)
     render json: json
   end
 

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  get 'home/latest'
+
   namespace :api do
     get 'imagesearch/:search' => 'imagesearch#index'
   end
+
+  get 'imagesearch/latest' => 'home#latest'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
